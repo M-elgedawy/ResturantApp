@@ -1,0 +1,40 @@
+<div class="container">
+  <ul>
+    <li *ngFor="let cartItem of cart.items">
+      <div>
+        <img [src]="cartItem.food.imageUrl" alt="">
+      </div>
+      <div>
+        {{cartItem.food.name}}
+      </div>
+      <div>
+        <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)">
+           <option [ngValue]="1">1</option>
+           <option [ngValue]="2">2</option>
+           <option [ngValue]="3">3</option>
+           <option [ngValue]="4">4</option>
+           <option [ngValue]="5">5</option>
+
+
+        </select>
+      </div>
+      <div>
+        <span>price:{{cartItem.getprice()}}</span>
+      </div>
+      <div>
+        <button (click)="removeFromCart(cartItem)">remove</button>
+      </div>
+    </li>
+  </ul>
+  <div class="checkout">
+    <div class="food-count">
+       {{cart.items.length}}
+    </div>
+    <div class="total-price">
+       {{cart.totalPrice()}}
+    </div>
+
+  </div>
+
+</div>
+
